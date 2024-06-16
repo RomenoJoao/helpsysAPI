@@ -35,3 +35,7 @@ class EstudoController {
     return res.status(201).json(estudo);
   }
 }
+
+
+
+export default EstudoController;
