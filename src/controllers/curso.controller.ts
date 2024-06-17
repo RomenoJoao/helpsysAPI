@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import { Prisma, PrismaClient } from "@prisma/client";
+import { equal } from "assert";
 
 const prisma = new PrismaClient();
 
@@ -39,6 +40,28 @@ class CursoController {
     } catch (error) {
       return res.status(400).json(error);
     }
+  }
+
+  async getEstudantes(req: Request, res: Response) {
+    const { id } = req.params;
+    const estudantes = await prisma.curso.findUnique({
+      where: {
+        cordId: Number(id),
+      },
+      select: {
+        estudantes: {
+          include: {
+            semestre: {
+              include: {
+                estudo: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    return res.status(200).json(estudantes);
   }
 }
 

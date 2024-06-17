@@ -16,7 +16,12 @@ class EstudanteController {
           email,
           idade,
           anoCurricular,
-          cursoId,
+          curso: {
+            connect: {
+              id: cursoId,
+            },
+          },
+          
         },
       });
       return res.status(201).json(estudante);
