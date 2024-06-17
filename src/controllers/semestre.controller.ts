@@ -1,23 +1,4 @@
-<<<<<<< Updated upstream
-import { Response, Request } from "express";
-import {  PrismaClient } from "@prisma/client";
 
-
-
-const prisma = new PrismaClient()
-
-
-class SemestreController{
-
-    async create(req:Request, res: Response){
-
-
-
-    }
-
-
-}
-=======
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 
@@ -79,4 +60,4 @@ class SemestreConroller {
 }
 
 export default SemestreConroller;
->>>>>>> Stashed changes
+
