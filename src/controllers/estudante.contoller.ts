@@ -4,7 +4,7 @@ import { json } from "stream/consumers";
 
 const prisma = new PrismaClient();
 
-class estudanteController {
+class EstudanteController {
   async create(req: Request, res: Response) {
     try {
       const { nome, matricula, email, idade, anoCurricular, cursoId } =
@@ -34,7 +34,7 @@ class estudanteController {
       return res.status(500).json({ message: error.message });
     }
   }
-  async getOne(req: Request, res: Response) {
+  async getById(req: Request, res: Response) {
     try {
       const estudanteId = req.params;
       const estudante = await prisma.estudante.findUnique({
@@ -48,4 +48,4 @@ class estudanteController {
     }
   }
 }
-export default estudanteController;
+export default EstudanteController;
